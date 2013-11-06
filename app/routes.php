@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'FrontController@index');
+Route::post('/updateplayer', 'FrontController@updateplayer');
+Route::get('/gamestate', 'FrontController@gamestate');
