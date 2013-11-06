@@ -14,3 +14,4 @@
 Route::get('/', 'FrontController@index');
 Route::post('/updateplayer', 'FrontController@updateplayer');
 Route::get('/gamestate', 'FrontController@gamestate');
+Route::post('/set_game', 'FrontController@set_game');

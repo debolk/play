@@ -22,7 +22,7 @@ class CreateUsersAndGames extends Migration {
               $table->string('name');
               $table->timestamps();
             });
-            Schema::create('player_game', function($table){
+            Schema::create('game_player', function($table){
               $table->integer('player_id')->unsigned();
               $table->integer('game_id')->unsigned();
               $table->timestamps();
@@ -38,7 +38,7 @@ class CreateUsersAndGames extends Migration {
 	{
             Schema::drop('players');
 		Schema::drop('games');
-            Schema::drop('player_game');
+            Schema::drop('game_player');
 	}
 
 }

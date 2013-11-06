@@ -11,11 +11,24 @@ class FrontController extends BaseController
   {
     // Create or update a new player
     $player = Player::find_or_create_by_name(Input::json('name'), Input::json('playing'));
-    return View::make('player', ['player' => $player]);
+    return $player->id;
   }
 
   public function gamestate()
   {
-    //FIXME implement method
+    return View::make('games', ['games' => Game::all()]);
+  }
+
+  public function set_game()
+  {
+    $player = Player::findOrFail(Input::json('player_id'));
+    $game = Game::findOrFail(Input::json('game_id'));
+
+    if (Input::json('playing')) {
+      $player->games()->attach($game->id, ['created_at' => 'now', 'updated_at' => 'now']);
+    }
+    else {
+      $player->games()->detach($game->id);
+    }
   }
 }
