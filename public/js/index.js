@@ -21,7 +21,7 @@ function display_success(message)
 function display_error(message)
 {
   $('#notifications').html(''); // Clear existing notifications
-  $('<div>').addClass('alert alert-error').text(message).appendTo('#notifications');
+  $('<div>').addClass('alert alert-danger').text(message).appendTo('#notifications');
 }
 
 function add_game(event)
@@ -38,16 +38,13 @@ function add_game(event)
     contentType: 'json',
     data: JSON.stringify({name: name}),
     success: function(result){
-      $('input', this).clear();
-      alert('Great success');
+      $('input', this).val('');
+      display_success('Game added');
     },
     error: function(){
-      alert('Error occurred');
-      window.location.reload();
+      display_error('Something went wrong adding your game; please reload');
     },
   });
-    // Clear input
-    // Show success notification
 }
 
 function toggle_game(event)
@@ -68,8 +65,7 @@ function toggle_game(event)
       playing: playing,
     }),
     error: function(error) {
-      alert('Error occurred');
-      window.location.reload();
+      display_error('Something went wrong adding your game preference; please reload');
     }
   });
 
@@ -104,8 +100,7 @@ function update_player(event)
       //setTimeout(get_gamestate, 1000);
     },
     error: function(error) {
-      alert('Error occurred');
-      window.location.reload();
+      display_error('Something went wrong adding your player details; please reload');
     },
   });
 }
