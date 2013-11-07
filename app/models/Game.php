@@ -2,6 +2,8 @@
 
 class Game extends Eloquent
 {
+  protected $fillable = ['name'];
+
   public function games()
   {
     return $this->belongsToMany('Player');

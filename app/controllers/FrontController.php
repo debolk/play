@@ -7,6 +7,11 @@ class FrontController extends BaseController
     return View::make('index');
   }
 
+  public function addgame()
+  {
+    Game::create(['name' => Input::json('name')]);
+  }
+
   public function updateplayer()
   {
     // Create or update a new player

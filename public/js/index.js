@@ -2,7 +2,53 @@ $(document).ready(function(){
   $('#player_data').submit(update_player);
 
   $('#games').on('click', '.toggle-game', toggle_game);
+
+  $('#add-game').submit(add_game);
+
+  $( window ).konami({  
+        cheat: function() {
+            display_success('Promoted to admin');
+            $('.admin').show();
+        }
+    });
 });
+
+function display_success(message)
+{
+  $('#notifications').html(''); // Clear existing notifications
+  $('<div>').addClass('alert alert-success').text(message).appendTo('#notifications');
+}
+function display_error(message)
+{
+  $('#notifications').html(''); // Clear existing notifications
+  $('<div>').addClass('alert alert-error').text(message).appendTo('#notifications');
+}
+
+function add_game(event)
+{
+  event.preventDefault();
+  
+  // Get input
+  var name = $('input', this).val();
+
+  // Send ajax
+  $.ajax({
+    url: '/addgame',
+    method: 'POST',
+    contentType: 'json',
+    data: JSON.stringify({name: name}),
+    success: function(result){
+      $('input', this).clear();
+      alert('Great success');
+    },
+    error: function(){
+      alert('Error occurred');
+      window.location.reload();
+    },
+  });
+    // Clear input
+    // Show success notification
+}
 
 function toggle_game(event)
 {

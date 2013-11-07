@@ -9,3 +9,11 @@
 .game h4 {
   margin-top: 0;
 }
+
+form#add-game {
+  margin-bottom: 1em;
+}
+
+.admin {
+  display: none;
+}

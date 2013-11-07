@@ -14,6 +14,10 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-12" id="notifications">
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-12">
           <form action="" class="form-inline" id="player_data">
             <h2>Add your player:</h2>
@@ -28,6 +32,12 @@
       <div class="row">
         <div class="col-md-12">
           <h1>Games available</h1>
+        </div>
+        <div class="col-md-12 admin">
+          <form action="" id="add-game" class="form-inline">
+            <input type="text" placeholder="Add a game">
+            <input type="submit" value="Add game">
+          </form>
         </div>
       </div>
       <div id="games">
@@ -57,6 +67,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/konami.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>
