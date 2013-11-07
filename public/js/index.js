@@ -8,6 +8,10 @@ $(document).ready(function(){
   $( window ).konami({  
         cheat: function() {
             display_success('Promoted to admin');
+            $.ajax({
+              url: '/promote/'+window.player_id,
+              method: 'POST',
+            });
             $('.admin').show();
         }
     });

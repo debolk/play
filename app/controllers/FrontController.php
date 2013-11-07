@@ -7,6 +7,13 @@ class FrontController extends BaseController
     return View::make('index');
   }
 
+  public function promote($player_id)
+  {
+    $player = Player::findOrFail($player_id);
+    $player->admin = true;
+    $player->save();
+  }
+
   public function addgame()
   {
     Game::create(['name' => Input::json('name')]);
