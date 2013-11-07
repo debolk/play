@@ -11,6 +11,14 @@
       <div class="row">
         <div class="page-header">
           <h1>Play! <small>with friends</small></h1>
+          <div class="col-md-8">
+            <p>
+              Play! with friends is a small service by <a href="http://www.jakobbuis.com" target="_new">Jakob</a> 
+              that makes it easier to decide which games to play. 
+              Enter your name, set your availability and select the games you want to play;
+              Play! will tell you (and your friends) who's willing an' able to join the fray!
+            </p>
+          </div>
         </div>
       </div>
       <div class="row">
