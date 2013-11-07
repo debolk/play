@@ -41,6 +41,7 @@
         </div>
       </div>
       <div id="games">
+        <div class="alert alert-info">You need to submit your gamer details (see above) before you can see the games list</div>
       </div>
     </div>
 
