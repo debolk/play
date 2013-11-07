@@ -22,7 +22,6 @@ $(document).ready(function(){
             });
         }
     });
-
 });
 
 function destroy_game(event)
