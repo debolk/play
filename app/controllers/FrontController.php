@@ -26,16 +26,29 @@ class FrontController extends BaseController
     return $player->id;
   }
 
+  public function destroy_game()
+  {
+    $player = Player::findOrFail(Input::json('player_id'));
+    $game = Game::findOrFail(Input::json('game_id'));
+
+    if (!$player->admin) {
+      return Response::make('Not authorized', 403);
+    }
+
+    $game->delete();
+  }
+
   public function gamestate($player_id)
   {
     // Log player contact
-    Player::findOrFail($player_id)->touch();
+    $player = Player::findOrFail($player_id);
+    $player->touch();
 
     // Purge offline players
     Player::purge_afk();
 
     // Return the gamestate
-    return View::make('games', ['games' => Game::all(), 'player_id' => $player_id]);
+    return View::make('games', ['games' => Game::all(), 'player' => $player]);
   }
 
   public function set_game()

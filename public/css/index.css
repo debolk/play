@@ -28,3 +28,8 @@ form#add-game {
 .btn-meh {
   background-color: #ccc;
 }
+
+.destroy {
+  color: #FF0000;
+  cursor: pointer;
+}

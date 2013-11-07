@@ -1,7 +1,11 @@
+<?php if ($games->count() == 0): ?>
+  <div class="alert alert-info">No games available</div>
+<?php endif; ?>
+
 <?php foreach ($games as $game): ?>
   <div class="game row" data-id="<?php echo $game->id;?>">
     <div class="col-md-1">
-      <?php if ($game->players->contains($player_id)): ?>
+      <?php if ($game->players->contains($player->id)): ?>
         <button class="btn btn-info toggle-game">
           <span class="glyphicon glyphicon-ok"></span>
           <span class="text">Yeah!</span>
@@ -15,7 +19,12 @@
     </div>
     <div class="col-md-11">
       <h4>
-        <span class="core"><?php echo $game->name; ?></span>
+        <span class="name">
+          <?php echo $game->name; ?>
+        </span>
+        <?php if ($player->admin): ?>
+          <span class="destroy destroy-game glyphicon glyphicon-remove"></span>
+        <?php endif; ?>
         <span class="label label-success">
           <?php echo $game->available_players()->get()->count(); ?> players available
         </span>

@@ -19,9 +19,6 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-
-
-
           <h2>Add your player:</h2>
           <form action="" class="form-inline" id="player_data">
             <div class="form-group">
@@ -39,14 +36,19 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-12 admin">
+          <h2>Add a game</h2>
+          <form action="" id="add-game" class="form-inline">
+            <div class="form-group">
+              <input type="text" placeholder="Add a game" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Add game" class="btn btn-default">
+            </div>
+          </form>
+        </div>
         <div class="col-md-12">
           <h1>Games available</h1>
-        </div>
-        <div class="col-md-12 admin">
-          <form action="" id="add-game" class="form-inline">
-            <input type="text" placeholder="Add a game">
-            <input type="submit" value="Add game">
-          </form>
         </div>
       </div>
       <div id="games">

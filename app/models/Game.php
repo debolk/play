@@ -18,4 +18,12 @@ class Game extends Eloquent
   {
     return $this->players()->where('players.playing', '=', '1');
   }
+
+  public function delete()
+  {
+    // Clear game_player first
+    DB::table('game_player')->where('game_id', '=', $this->id)->delete();
+
+    return parent::delete();
+  }
 }

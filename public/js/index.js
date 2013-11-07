@@ -2,20 +2,51 @@ $(document).ready(function(){
   $('#player_data').submit(update_player);
 
   $('#games').on('click', '.toggle-game', toggle_game);
+  $('#games').on('click', '.destroy-game', destroy_game);
 
   $('#add-game').submit(add_game);
 
   $( window ).konami({  
         cheat: function() {
-            display_success('Promoted to admin');
             $.ajax({
               url: '/promote/'+window.player_id,
               method: 'POST',
+              success: function() {
+                display_success('Promoted to admin');
+                $('.admin').show();
+              },
+              error: function(){
+                display_error('Could not promote to admin. You probably need to sign in first');
+              },
             });
-            $('.admin').show();
         }
     });
+
 });
+
+function destroy_game(event)
+{
+  event.preventDefault();
+  var game = $($(this).parents('.game')[0]);
+
+  if (confirm('Are you sure you want to permanently destroy "'+$.trim($('.name',game).text())+'"?')) {
+    $.ajax({
+      url: '/destroygame',
+      method: 'DELETE',
+      contentType: 'json',
+      data: JSON.stringify({
+        player_id: window.player_id,
+        game_id: game.attr('data-id'),
+      }),
+      success: function() {
+        display_success('Game removed');
+      },
+      error: function(){
+        display_error('Could not destroy game');
+      }
+    });
+  }
+}
 
 function display_success(message)
 {
