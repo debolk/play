@@ -1,5 +1,5 @@
 <?php foreach ($games as $game): ?>
-  <div class="game row" data-id="1">
+  <div class="game row" data-id="<?php echo $game->id;?>">
     <div class="col-md-1">
       <?php if ($game->players->contains($player_id)): ?>
         <button class="btn btn-success toggle-game">
