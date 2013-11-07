@@ -19,13 +19,22 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+
+
+
+          <h2>Add your player:</h2>
           <form action="" class="form-inline" id="player_data">
-            <h2>Add your player:</h2>
-            Name: <input type="text" class="input-large" name="player_name">
-            Currently playing a game: 
+            <div class="form-group">
+              <input type="text" class="form-control" name="player_name" placeholder="Real name">
+            </div>
+            <div class="form-group">
+              <label for="player_state">Now playing:</label>
               <input type="radio" name="player_state" value="1"> Yes
               <input type="radio" name="player_state" value="0"> No
-            <input type="submit" value="Update">
+            </div>
+            <div class="form-group">
+              <input class="btn btn-default" type="submit" value="Update">
+            </div>
           </form>
         </div>
       </div>

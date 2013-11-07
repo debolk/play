@@ -16,15 +16,19 @@
     <div class="col-md-11">
       <h4>
         <span class="core"><?php echo $game->name; ?></span>
-        <i class="glyphicon glyphicon-ok"></i> <?php $game->available_players()->count(); ?>
-        <i class="glyphicon glyphicon-remove"></i> <?php $game->unavailable_players()->count(); ?>
+        <span class="label label-success">
+          <?php echo $game->available_players()->get()->count(); ?> players available
+        </span>
+        <span class="label label-warning">
+          <?php echo $game->unavailable_players()->get()->count(); ?> players interested
+        </span>
       </h4>
       <p class="players">
-        <?php foreach($game->available_players() as $player): ?>
-          <span class="label label-success"><?php echo $player->game; ?></span>
+        <?php foreach($game->available_players()->get() as $player): ?>
+          <span class="label label-success"><?php echo $player->name; ?></span>
         <?php endforeach; ?>
-        <?php foreach($game->unavailable_players() as $player): ?>
-          <span class="label label-warning"><?php echo $player->game; ?></span>
+        <?php foreach($game->unavailable_players()->get() as $player): ?>
+          <span class="label label-warning"><?php echo $player->name; ?></span>
         <?php endforeach; ?>
       </p>
     </div>
