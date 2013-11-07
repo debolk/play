@@ -18,6 +18,7 @@
               Enter your name, set your availability and select the games you want to play;
               Play! will tell you (and your friends) who's willing an' able to join the fray!
             </p>
+            <p><strong>Important: keep this page open while gaming!</strong></p>
           </div>
         </div>
       </div>
