@@ -16,8 +16,6 @@ class Player extends Eloquent
     $players = Player::where('updated_at', '<', strftime('%F %H:%M', time() - $timeout))->get();
 
     foreach ($players as $player) {
-      // Remove games selected
-      DB::table('game_player')->where('player_id', '=', $player->id)->delete();
       // Remove player
       $player->delete();
     }
@@ -49,5 +47,13 @@ class Player extends Eloquent
   public static function unavailable()
   {
     return self::where('playing', '=', '1');
+  }
+
+  public function delete()
+  {
+    // Clear game_player first
+    DB::table('game_player')->where('player_id', '=', $this->id)->delete();
+
+    return parent::delete();
   }
 }

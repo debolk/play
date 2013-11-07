@@ -38,6 +38,18 @@ class FrontController extends BaseController
     $game->delete();
   }
 
+  public function destroy_player()
+  {
+    $player = Player::findOrFail(Input::json('player_id'));
+    $admin = Player::findOrFail(Input::json('admin_id'));
+
+    if (!$admin->admin) {
+      return Response::make('Not authorized', 403);
+    }
+
+    $player->delete();
+  }
+
   public function gamestate($player_id)
   {
     // Log player contact

@@ -33,11 +33,21 @@
         </span>
       </h4>
       <p class="players">
-        <?php foreach($game->available_players()->get() as $player): ?>
-          <span class="label label-success"><?php echo $player->name; ?></span>
+        <?php foreach($game->available_players()->get() as $p): ?>
+          <span class="label label-success player" data-id="<?php echo $p->id; ?>">
+            <span class="name"><?php echo $p->name; ?></span>
+            <?php if ($player->admin): ?>
+              <span class="destroy destroy-player glyphicon glyphicon-remove"></span>
+            <?php endif; ?>
+          </span>
         <?php endforeach; ?>
-        <?php foreach($game->unavailable_players()->get() as $player): ?>
-          <span class="label label-warning"><?php echo $player->name; ?></span>
+        <?php foreach($game->unavailable_players()->get() as $p): ?>
+          <span class="label label-warning player" data-id="<?php echo $p->id; ?>">
+            <span class="name"><?php echo $p->name; ?></span>
+            <?php if ($player->admin): ?>
+              <span class="destroy destroy-player glyphicon glyphicon-remove"></span>
+            <?php endif; ?>
+          </span>
         <?php endforeach; ?>
       </p>
     </div>

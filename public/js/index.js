@@ -3,6 +3,7 @@ $(document).ready(function(){
 
   $('#games').on('click', '.toggle-game', toggle_game);
   $('#games').on('click', '.destroy-game', destroy_game);
+  $('#games').on('click', '.destroy-player', destroy_player);
 
   $('#add-game').submit(add_game);
 
@@ -28,8 +29,9 @@ function destroy_game(event)
 {
   event.preventDefault();
   var game = $($(this).parents('.game')[0]);
+  var game_name = $.trim($($('.name',game)[0]).text());
 
-  if (confirm('Are you sure you want to permanently destroy "'+$.trim($('.name',game).text())+'"?')) {
+  if (confirm('Are you sure you want to permanently destroy "'+game_name+'"?')) {
     $.ajax({
       url: '/destroygame',
       method: 'DELETE',
@@ -43,6 +45,30 @@ function destroy_game(event)
       },
       error: function(){
         display_error('Could not destroy game');
+      }
+    });
+  }
+}
+
+function destroy_player(event)
+{
+  event.preventDefault();
+  var player = $($(this).parents('.player')[0]);
+
+  if (confirm('Are you sure you want to purge "'+$.trim($('.name',player).text())+'"?')) {
+    $.ajax({
+      url: '/destroyplayer',
+      method: 'DELETE',
+      contentType: 'json',
+      data: JSON.stringify({
+        admin_id: window.player_id,
+        player_id: player.attr('data-id'),
+      }),
+      success: function() {
+        display_success('Player purged');
+      },
+      error: function(){
+        display_error('Could not purge player');
       }
     });
   }
