@@ -19,7 +19,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h2>Add your player:</h2>
+          <h2>Enter gamer details</h2>
           <form action="" class="form-inline" id="player_data">
             <div class="form-group">
               <input type="text" class="form-control" name="player_name" placeholder="Real name">
