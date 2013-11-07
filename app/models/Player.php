@@ -31,8 +31,11 @@ class Player extends Eloquent
     $player = Player::where('name', '=', $name)->first();
     if (!$player) {
       $player = new Player(['name' => $name, 'playing' => 0]);
-      $player->save();
     }
+    else {
+      $player->playing = 0;
+    }
+    $player->save();
     return $player;
   }
 
