@@ -4,6 +4,25 @@ class Player extends Eloquent
 {
   protected $fillable = ['name', 'playing'];
 
+  public function touch()
+  {
+    $this->updated_at = time();
+    $this->save();
+  }
+
+  public static function purge_afk($timeout = 300)
+  {
+    // Purge player who are offline too long
+    $players = Player::where('updated_at', '<', strftime('%F %H:%M', time() - $timeout))->get();
+
+    foreach ($players as $player) {
+      // Remove games selected
+      DB::table('game_player')->where('player_id', '=', $player->id)->delete();
+      // Remove player
+      $player->delete();
+    }
+  }
+
   public function games()
   {
     return $this->belongsToMany('Game');

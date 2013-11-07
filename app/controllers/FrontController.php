@@ -21,6 +21,13 @@ class FrontController extends BaseController
 
   public function gamestate($player_id)
   {
+    // Log player contact
+    Player::findOrFail($player_id)->touch();
+
+    // Purge offline players
+    Player::purge_afk();
+
+    // Return the gamestate
     return View::make('games', ['games' => Game::all(), 'player_id' => $player_id]);
   }
 
