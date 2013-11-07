@@ -52,7 +52,6 @@ function toggle_game(event)
   event.preventDefault();
   var game_id = $($(this).parents('.game')[0]).attr('data-id');
   var playing = $(this).hasClass('btn-warning');
-  console.log(playing);
 
   // Send update to server
   $.ajax({
@@ -97,7 +96,7 @@ function update_player(event)
       window.player_id = player_id;
 
       // Start querying for gamestate
-      //setTimeout(get_gamestate, 1000);
+      setTimeout(get_gamestate, 1000);
     },
     error: function(error) {
       display_error('Something went wrong adding your player details; please reload');
@@ -108,14 +107,14 @@ function update_player(event)
 function get_gamestate()
 {
   $.ajax({
-    url: '/gamestate',
+    url: '/gamestate/'+window.player_id,
+    contentType: 'json',
     success: function(result) {
       $('#games').html(result);
       setTimeout(get_gamestate, 1000);  
     },
     error: function(error) {
-      alert('Error occurred');
-      window.location.reload();
+      display_error('Could not get gamestate; please reload');
     },
   });
 }

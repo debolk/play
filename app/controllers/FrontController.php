@@ -19,9 +19,9 @@ class FrontController extends BaseController
     return $player->id;
   }
 
-  public function gamestate()
+  public function gamestate($player_id)
   {
-    return View::make('games', ['games' => Game::all()]);
+    return View::make('games', ['games' => Game::all(), 'player_id' => $player_id]);
   }
 
   public function set_game()
@@ -29,7 +29,7 @@ class FrontController extends BaseController
     $player = Player::findOrFail(Input::json('player_id'));
     $game = Game::findOrFail(Input::json('game_id'));
 
-    if (Input::json('playing')) {
+    if (Input::json('playing') && !$player->games->contains($game->id)) {
       $player->games()->attach($game->id, ['created_at' => 'now', 'updated_at' => 'now']);
     }
     else {

@@ -41,26 +41,6 @@
         </div>
       </div>
       <div id="games">
-        <div class="game row" data-id="1">
-          <div class="col-md-1">
-            <button class="btn btn-warning toggle-game">
-              <span class="glyphicon glyphicon-remove"></span>
-              <span class="text">Meh</span>
-            </button>
-          </div>
-          <div class="col-md-11">
-            <h4>
-              <span class="core">Age of Empires II</span>
-              <i class="glyphicon glyphicon-ok"></i> 2
-              <i class="glyphicon glyphicon-remove"></i> 5
-            </h4>
-            <p class="players">
-              <span class="label label-success">Jakob Buis</span>
-              <span class="label label-success">Jelle Schut</span>
-              <span class="label label-warning">Max Maton</span>
-            </p>
-          </div>
-        </div>
       </div>
     </div>
 

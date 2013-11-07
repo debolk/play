@@ -4,18 +4,18 @@ class Game extends Eloquent
 {
   protected $fillable = ['name'];
 
-  public function games()
+  public function players()
   {
     return $this->belongsToMany('Player');
   }
 
-  public function available_players_count()
+  public function available_players()
   {
-    return 1;
+    return $this->players()->where('players.playing', '=', '0');
   }
 
-  public function unavailable_players_count()
+  public function unavailable_players()
   {
-    return 2;
+    return $this->players()->where('players.playing', '=', '1');
   }
 }

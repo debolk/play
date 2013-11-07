@@ -1,14 +1,32 @@
-<div class="games">
-  <?php foreach ($games as $game): ?>
-    <div class="game row">
-      <div class="span2">
-        <input type="checkbox">        
-      </div>
-      <div class="span10">
-        <h2><?php echo $game->name; ?></h2>
-        <span class="available"><?php echo $game->available_players_count(); ?></span>
-        <span class="available"><?php echo $game->unavailable_players_count(); ?></span>
-      </div>
+<?php foreach ($games as $game): ?>
+  <div class="game row" data-id="1">
+    <div class="col-md-1">
+      <?php if ($game->players->contains($player_id)): ?>
+        <button class="btn btn-success toggle-game">
+          <span class="glyphicon glyphicon-ok"></span>
+          <span class="text">Yeah!</span>
+        </button>
+      <?php else: ?>
+        <button class="btn btn-warning toggle-game">
+          <span class="glyphicon glyphicon-remove"></span>
+          <span class="text">Meh</span>
+        </button>
+      <?php endif; ?>
     </div>
-  <?php endforeach; ?>
-</div>
+    <div class="col-md-11">
+      <h4>
+        <span class="core"><?php echo $game->name; ?></span>
+        <i class="glyphicon glyphicon-ok"></i> <?php $game->available_players()->count(); ?>
+        <i class="glyphicon glyphicon-remove"></i> <?php $game->unavailable_players()->count(); ?>
+      </h4>
+      <p class="players">
+        <?php foreach($game->available_players() as $player): ?>
+          <span class="label label-success"><?php echo $player->game; ?></span>
+        <?php endforeach; ?>
+        <?php foreach($game->unavailable_players() as $player): ?>
+          <span class="label label-warning"><?php echo $player->game; ?></span>
+        <?php endforeach; ?>
+      </p>
+    </div>
+  </div>
+<?php endforeach; ?>
