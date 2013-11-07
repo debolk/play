@@ -26,16 +26,13 @@ class Player extends Eloquent
     return $this->belongsToMany('Game');
   }
 
-  public static function find_or_create_by_name($name, $playing)
+  public static function find_or_create_by_name($name)
   {
     $player = Player::where('name', '=', $name)->first();
-    if ($player) {
-      $player->playing = $playing;
+    if (!$player) {
+      $player = new Player(['name' => $name, 'playing' => 0]);
+      $player->save();
     }
-    else {
-      $player = new Player(['name' => $name, 'playing' => $playing]);
-    }
-    $player->save();
     return $player;
   }
 

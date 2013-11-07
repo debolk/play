@@ -19,18 +19,13 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h2>Enter gamer details</h2>
+          <h2>Your name:</h2>
           <form action="" class="form-inline" id="player_data">
             <div class="form-group">
               <input type="text" class="form-control" name="player_name" placeholder="Real name">
             </div>
             <div class="form-group">
-              <label for="player_state">Now playing:</label>
-              <input type="radio" name="player_state" value="1"> Yes
-              <input type="radio" name="player_state" value="0"> No
-            </div>
-            <div class="form-group">
-              <input class="btn btn-default" type="submit" value="Update">
+              <input class="btn btn-default" type="submit" value="Start gaming">
             </div>
           </form>
         </div>
@@ -47,12 +42,19 @@
             </div>
           </form>
         </div>
-        <div class="col-md-12">
-          <h1>Games available</h1>
-        </div>
       </div>
+
+      <p class="player-state">
+        <strong>My status:</strong>
+        <span class="label label-success" data-value="0">
+          I'm available
+        </span>
+        <span class="label label-meh" data-value="1">
+          I'm busy playing
+        </span>
+      </p>
+
       <div id="games">
-        <div class="alert alert-info">You need to submit your gamer details (see above) before you can see the games list</div>
       </div>
     </div>
 

@@ -19,11 +19,18 @@ class FrontController extends BaseController
     Game::create(['name' => Input::json('name')]);
   }
 
-  public function updateplayer()
+  public function createplayer()
   {
     // Create or update a new player
-    $player = Player::find_or_create_by_name(Input::json('name'), Input::json('playing'));
+    $player = Player::find_or_create_by_name(Input::json('name'));
     return $player->id;
+  }
+
+  public function setplayerstate()
+  {
+    $player = Player::findOrFail(Input::json('player_id'));
+    $player->playing = Input::json('playing');
+    $player->save();
   }
 
   public function destroy_game()

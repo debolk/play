@@ -25,11 +25,20 @@ form#add-game {
   margin-bottom: 1em;
 }
 
-.btn-meh {
+.btn-meh, .label-meh {
   background-color: #ccc;
 }
 
 .destroy {
   color: #FF0000;
   cursor: pointer;
+}
+
+.player-state {
+  cursor: pointer;
+  display: none;
+}
+
+p {
+  font-size: large;
 }

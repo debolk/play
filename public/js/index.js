@@ -1,9 +1,11 @@
 $(document).ready(function(){
-  $('#player_data').submit(update_player);
+  $('#player_data').submit(createplayer);
 
   $('#games').on('click', '.toggle-game', toggle_game);
   $('#games').on('click', '.destroy-game', destroy_game);
   $('#games').on('click', '.destroy-player', destroy_player);
+  
+  $('span', '.player-state').on('click', update_player_state);
 
   $('#add-game').submit(add_game);
 
@@ -23,6 +25,36 @@ $(document).ready(function(){
         }
     });
 });
+
+function update_player_state(event)
+{
+  event.preventDefault();
+
+  // Get value
+  var state = $(this).attr('data-value');
+
+  // Send Ajax
+  $.ajax({
+    url: '/setplayerstate',
+    method: 'POST',
+    contentType: 'json',
+    data: JSON.stringify({player_id: window.player_id, playing: state}),
+    error: function() {
+      display_error('Could not set your playing state; please reload');
+    },
+    success: function() {
+      // Update interface buttons
+      if (state == 0) {
+        $('span[data-value=0]').addClass('label-success').removeClass('label-meh');
+        $('span[data-value=1]').addClass('label-meh').removeClass('label-warning');
+      }
+      else {
+        $('span[data-value=0]').addClass('label-meh').removeClass('label-success');
+        $('span[data-value=1]').addClass('label-warning').removeClass('label-meh');
+      }
+    }
+  });
+}
 
 function destroy_game(event)
 {
@@ -139,21 +171,25 @@ function toggle_game(event)
   }
 }
 
-function update_player(event)
+function createplayer(event)
 {
-  //FIXME reset player when first created?
   event.preventDefault();
   $.ajax({
-    url: '/updateplayer',
+    url: '/createplayer',
     method: 'POST',
     contentType: 'json',
     data: JSON.stringify({
       name: $('input[name="player_name"]').val(),
-      playing: $('input[name="player_state"]:checked').val(),
     }),
     success: function(player_id) {
       // Store our ID
       window.player_id = player_id;
+
+      // Hide form
+      $('#player_data').parent().slideUp();
+
+      // Show player state form
+      $('.player-state').slideDown();
 
       // Start querying for gamestate
       setTimeout(get_gamestate, 1000);
