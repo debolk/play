@@ -26,4 +26,9 @@ class Game extends Eloquent
 
     return parent::delete();
   }
+
+  public function youtube()
+  {
+    return 'http://www.youtube.com/results?'.http_build_query(['search_query' => $this->name.' gameplay']);
+  }
 }

@@ -22,6 +22,7 @@
         <span class="name">
           <?php echo $game->name; ?>
         </span>
+        (<a target="_new" href="<?php echo $game->youtube(); ?>">what's this?</a>)
         <?php if ($player->admin): ?>
           <span class="destroy destroy-game glyphicon glyphicon-remove"></span>
         <?php endif; ?>
