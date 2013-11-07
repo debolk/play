@@ -130,7 +130,7 @@ function add_game(event)
     contentType: 'json',
     data: JSON.stringify({name: name}),
     success: function(result){
-      $('input', '#add-game').val('');
+      $('input[type="text"]', '#add-game').val('');
       display_success('Game added');
     },
     error: function(){
