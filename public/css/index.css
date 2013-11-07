@@ -24,3 +24,7 @@ form#add-game {
   border-radius: 1em;
   margin-bottom: 1em;
 }
+
+.btn-meh {
+  background-color: #ccc;
+}

@@ -2,12 +2,12 @@
   <div class="game row" data-id="<?php echo $game->id;?>">
     <div class="col-md-1">
       <?php if ($game->players->contains($player_id)): ?>
-        <button class="btn btn-success toggle-game">
+        <button class="btn btn-info toggle-game">
           <span class="glyphicon glyphicon-ok"></span>
           <span class="text">Yeah!</span>
         </button>
       <?php else: ?>
-        <button class="btn btn-warning toggle-game">
+        <button class="btn btn-meh toggle-game">
           <span class="glyphicon glyphicon-remove"></span>
           <span class="text">Meh</span>
         </button>

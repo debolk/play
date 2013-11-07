@@ -51,7 +51,7 @@ function toggle_game(event)
 {
   event.preventDefault();
   var game_id = $($(this).parents('.game')[0]).attr('data-id');
-  var playing = $(this).hasClass('btn-warning');
+  var playing = $(this).hasClass('btn-meh');
 
   // Send update to server
   $.ajax({
@@ -69,7 +69,7 @@ function toggle_game(event)
   });
 
   // Toggle interface button
-  $(this).toggleClass('btn-warning btn-success');
+  $(this).toggleClass('btn-meh btn-info');
   $('.glyphicon', this).toggleClass('glyphicon-remove glyphicon-ok');
   if (playing) {
     $('.text', this).text('Yeah!');
