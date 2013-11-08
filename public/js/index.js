@@ -132,7 +132,7 @@ function add_game(event)
     url: '/addgame',
     method: 'POST',
     contentType: 'json',
-    data: JSON.stringify({name: name}),
+    data: JSON.stringify({name: name, admin_id: window.player_id}),
     success: function(result){
       $('input[type="text"]', '#add-game').val('');
       add_notification('success', 'Game added');

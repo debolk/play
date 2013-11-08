@@ -8,6 +8,11 @@ class GameController extends BaseController
    */
   public function addgame()
   {
+    $player = Player::findOrFail(Input::json('admin_id'));
+    if (!$player->admin) {
+      return Response::make('Not authorized', 403);
+    }
+
     Game::create(['name' => Input::json('name')]);
   }
 
