@@ -211,7 +211,7 @@ function get_gamestate()
     contentType: 'json',
     success: function(result) {
       $('#games').html(result);
-      setTimeout(get_gamestate, 1000);  
+      setTimeout(get_gamestate, 3000);  
     },
     error: function(error) {
       add_notification('danger', 'Could not get gamestate; please reload');
