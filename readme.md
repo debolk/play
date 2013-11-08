@@ -6,5 +6,8 @@ Play! with friends is a small service by Jakob that makes it easier to decide wh
 
 Important: keep this page open while gaming! To prevent stale information, non-responding users will be purged from the system with extreme prejudice.
 
+### Technical information
+Play! is built using [Laravel 4](http://www.laravel.com). Install using [Composer](http://www.getcomposer.org).
+
 ### Copyright
 Copyright [Jakob Buis](http://www.jakobbuis.com) 2013. All rights reserved.
