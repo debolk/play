@@ -2,11 +2,19 @@
 
 class GameController extends BaseController
 {
+  /**
+   * Add a new game to the system
+   * @return void
+   */
   public function addgame()
   {
     Game::create(['name' => Input::json('name')]);
   }
 
+  /**
+   * Completely remove a game from the system
+   * @return void
+   */
   public function destroy_game()
   {
     $player = Player::findOrFail(Input::json('player_id'));
@@ -19,6 +27,11 @@ class GameController extends BaseController
     $game->delete();
   }
 
+  /**
+   * Retrieve the updated state of all games
+   * @param int $player_id
+   * @return void
+   */
   public function gamestate($player_id)
   {
     // Log player contact
@@ -32,6 +45,10 @@ class GameController extends BaseController
     return View::make('games', ['games' => Game::all(), 'player' => $player]);
   }
 
+  /**
+   * Set or unset a player's interest in the game
+   * @return void
+   */ 
   public function set_game()
   {
     $player = Player::findOrFail(Input::json('player_id'));

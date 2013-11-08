@@ -2,6 +2,11 @@
 
 class PlayerController extends BaseController
 {
+  /**
+   * Promotes a player to admin
+   * @param int $player_id
+   * @return void
+   */
   public function promote($player_id)
   {
     $player = Player::findOrFail($player_id);
@@ -9,6 +14,10 @@ class PlayerController extends BaseController
     $player->save();
   }
 
+  /**
+   * Creates a new player; if the players name is already taken, use the existing player
+   * @return void
+   */
   public function createplayer()
   {
     // Create or update a new player
@@ -16,6 +25,10 @@ class PlayerController extends BaseController
     return $player->id;
   }
 
+  /**
+   * Set the current state (playing or not) of a player
+   * @return void
+   */
   public function setplayerstate()
   {
     $player = Player::findOrFail(Input::json('player_id'));
@@ -23,6 +36,10 @@ class PlayerController extends BaseController
     $player->save();
   }
 
+  /**
+   * Completely remove a player from the system
+   * @return void
+   */
   public function destroy_player()
   {
     $player = Player::findOrFail(Input::json('player_id'));
