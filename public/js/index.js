@@ -111,13 +111,16 @@ function destroy_player(event)
 
 function clear_notifications()
 {
-  $('#notifications').html('');
+  $('#notifications').slideUp(400);
+  setTimeout(function(){
+    $('#notifications').html('').show();
+  }, 450);
 }
 
 function add_notification(type, message)
 {
-  clear_notifications();
   $('<div>').addClass('alert alert-'+type).text(message).appendTo('#notifications');
+  setTimeout(clear_notifications, 5000);
 }
 
 function add_game(event)
