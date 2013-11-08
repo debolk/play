@@ -215,6 +215,7 @@ function get_gamestate()
     },
     error: function(error) {
       add_notification('danger', 'Could not get gamestate; please reload');
+      setTimeout(get_gamestate, 3000);	
     },
   });
 }
