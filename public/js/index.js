@@ -15,14 +15,14 @@ $(document).ready(function(){
               url: '/promote/'+window.player_id,
               method: 'POST',
               success: function() {
-                display_success('Promoted to admin');
+                add_notification('success', 'Promoted to admin');
                 $('.admin').show();
               },
               error: function(){
-                display_error('Could not promote to admin. You probably need to sign in first');
+                add_notification('danger', 'Could not promote to admin. You probably need to sign in first');
               },
             });
-        }
+        },
     });
 });
 
@@ -40,7 +40,7 @@ function update_player_state(event)
     contentType: 'json',
     data: JSON.stringify({player_id: window.player_id, playing: state}),
     error: function() {
-      display_error('Could not set your playing state; please reload');
+      add_notification('danger', 'Could not set your playing state; please reload');
     },
     success: function() {
       // Update interface buttons
@@ -72,10 +72,10 @@ function destroy_game(event)
         game_id: game.attr('data-id'),
       }),
       success: function() {
-        display_success('Game removed');
+        add_notification('success', 'Game removed');
       },
       error: function(){
-        display_error('Could not destroy game');
+        add_notification('danger', 'Could not destroy game');
       }
     });
   }
@@ -96,24 +96,24 @@ function destroy_player(event)
         player_id: player.attr('data-id'),
       }),
       success: function() {
-        display_success('Player purged');
+        add_notification('success', 'Player purged');
       },
       error: function(){
-        display_error('Could not purge player');
+        add_notification('danger', 'Could not purge player');
       }
     });
   }
 }
 
-function display_success(message)
+function clear_notifications()
 {
-  $('#notifications').html(''); // Clear existing notifications
-  $('<div>').addClass('alert alert-success').text(message).appendTo('#notifications');
+  $('#notifications').html('');
 }
-function display_error(message)
+
+function add_notification(type, message)
 {
-  $('#notifications').html(''); // Clear existing notifications
-  $('<div>').addClass('alert alert-danger').text(message).appendTo('#notifications');
+  clear_notifications();
+  $('<div>').addClass('alert alert-'+type).text(message).appendTo('#notifications');
 }
 
 function add_game(event)
@@ -131,10 +131,10 @@ function add_game(event)
     data: JSON.stringify({name: name}),
     success: function(result){
       $('input[type="text"]', '#add-game').val('');
-      display_success('Game added');
+      add_notification('success', 'Game added');
     },
     error: function(){
-      display_error('Something went wrong adding your game; please reload');
+      add_notification('danger', 'Something went wrong adding your game; please reload');
     },
   });
 }
@@ -156,7 +156,7 @@ function toggle_game(event)
       playing: playing,
     }),
     error: function(error) {
-      display_error('Something went wrong adding your game preference; please reload');
+      add_notification('danger', 'Something went wrong adding your game preference; please reload');
     }
   });
 
@@ -195,7 +195,7 @@ function createplayer(event)
       setTimeout(get_gamestate, 1000);
     },
     error: function(error) {
-      display_error('Something went wrong adding your player details; please reload');
+      add_notification('danger', 'Something went wrong adding your player details; please reload');
     },
   });
 }
@@ -210,7 +210,7 @@ function get_gamestate()
       setTimeout(get_gamestate, 1000);  
     },
     error: function(error) {
-      display_error('Could not get gamestate; please reload');
+      add_notification('danger', 'Could not get gamestate; please reload');
     },
   });
 }
