@@ -9,5 +9,8 @@ Important: keep this page open while gaming! To prevent stale information, non-r
 ### Technical information
 Play! is built using [Laravel 4](http://www.laravel.com). Install using [Composer](http://www.getcomposer.org).
 
+### Administration
+A basic administration interface is provided to add games, destroy games and manually purge users. This interface is coded inline with the user interface and accessed by typing the konami code.
+
 ### Copyright
 Copyright [Jakob Buis](http://www.jakobbuis.com) 2013. All rights reserved.
