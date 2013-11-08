@@ -55,7 +55,7 @@ class GameController extends BaseController
     $game = Game::findOrFail(Input::json('game_id'));
 
     if (Input::json('playing') && !$player->games->contains($game->id)) {
-      $player->games()->attach($game->id, ['created_at' => DB::raw('datetime()'), 'updated_at' => DB::raw('datetime()')]);
+      $player->games()->attach($game->id, ['created_at' => DB::raw('now()'), 'updated_at' => DB::raw('now()')]);
     }
     else {
       $player->games()->detach($game->id);

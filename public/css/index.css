@@ -42,3 +42,8 @@ form#add-game {
 p {
   font-size: large;
 }
+
+.request_admin_powers {
+  display: inline-block;
+  margin-left: 20em;
+}

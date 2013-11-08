@@ -9,22 +9,26 @@ $(document).ready(function(){
 
   $('#add-game').submit(add_game);
 
-  $( window ).konami({  
-        cheat: function() {
-            $.ajax({
-              url: '/promote/'+window.player_id,
-              method: 'POST',
-              success: function() {
-                add_notification('success', 'Promoted to admin');
-                $('.admin').show();
-              },
-              error: function(){
-                add_notification('danger', 'Could not promote to admin. You probably need to sign in first');
-              },
-            });
-        },
-    });
+  $('.request_admin_powers').on('click', request_admin_powers);
 });
+
+function request_admin_powers(event)
+{
+  event.preventDefault();
+
+  var admin_key = prompt('Secret key?');
+  $.ajax({
+    url: '/promote/'+window.player_id+'/'+admin_key,
+    method: 'POST',
+    success: function() {
+      add_notification('success', 'Promoted to admin');
+      $('.admin').show();
+    },
+    error: function(){
+      add_notification('danger', 'Could not promote to admin. You probably entered the wrong key.');
+    },
+  });
+}
 
 function update_player_state(event)
 {

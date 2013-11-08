@@ -10,7 +10,7 @@ Route::post('/addgame', 'GameController@addgame');
 Route::delete('/destroygame', 'GameController@destroy_game');
 
 // Managing players
-Route::post('/promote/{id}', 'PlayerController@promote');
+Route::post('/promote/{id}/{securitykey}', 'PlayerController@promote');
 Route::post('/createplayer', 'PlayerController@createplayer');
 Route::post('/setplayerstate', 'PlayerController@setplayerstate');
 Route::delete('/destroyplayer', 'PlayerController@destroy_player');

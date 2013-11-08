@@ -7,8 +7,14 @@ class PlayerController extends BaseController
    * @param int $player_id
    * @return void
    */
-  public function promote($player_id)
+  public function promote($player_id, $security_key)
   {
+    $expected_key = getenv('ADMIN_KEY');
+
+    if ($expected_key !== $security_key) {
+      return Response::make('Not authorized', 403);
+    }
+    
     $player = Player::findOrFail($player_id);
     $player->admin = true;
     $player->save();

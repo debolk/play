@@ -53,16 +53,22 @@
           </form>
         </div>
       </div>
-
-      <p class="player-state">
-        <strong>My status:</strong>
-        <span class="label label-success" data-value="0">
-          I'm available
-        </span>
-        <span class="label label-meh" data-value="1">
-          I'm busy playing
-        </span>
-      </p>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="player-state">
+            <strong>My status:</strong>
+            <span class="label label-success" data-value="0">
+              I'm available
+            </span>
+            <span class="label label-meh" data-value="1">
+              I'm busy playing
+            </span>
+            <small class="request_admin_powers">
+              <a href="#">I'm an admin, really!</a>
+            </small>
+          </p>
+        </div>
+      </div>
 
       <div id="games">
       </div>
@@ -71,7 +77,6 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/konami.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>
