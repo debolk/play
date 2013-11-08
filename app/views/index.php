@@ -16,9 +16,10 @@
               Play! with friends is a small service by <a href="http://www.jakobbuis.com" target="_new">Jakob</a> 
               that makes it easier to decide which games to play. 
               Enter your name, set your availability and select the games you want to play;
-              Play! will tell you (and your friends) who's willing an' able to join the fray!
+              Play! will tell you and your friends who's willing an' able to join the fray!
             </p>
-            <p><strong>Important: keep this page open while gaming!</strong></p>
+            <p><strong>Important: keep this page open while gaming!</strong> 
+                To prevent stale information, non-responding users will be purged from the system with extreme prejudice.</p>
           </div>
         </div>
       </div>
