@@ -13,7 +13,7 @@ class Game extends Eloquent
    */
   public function players()
   {
-    return $this->belongsToMany('Player');
+    return $this->belongsToMany('Player')->orderBy('players.name');
   }
 
   /**

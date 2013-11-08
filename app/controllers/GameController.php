@@ -47,7 +47,7 @@ class GameController extends BaseController
     Player::purge_afk();
 
     // Return the gamestate
-    return View::make('games', ['games' => Game::all(), 'player' => $player]);
+    return View::make('games', ['games' => Game::orderBy('games.name')->get(), 'player' => $player]);
   }
 
   /**
