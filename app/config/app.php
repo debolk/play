@@ -113,6 +113,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Intouch\LaravelNewrelic\LaravelNewrelicServiceProvider',
 
 	),
 
@@ -178,7 +179,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+		'Newrelic'        => 'Intouch\LaravelNewrelic\Facades\Newrelic',
 	),
 
 );

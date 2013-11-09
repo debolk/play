@@ -41,13 +41,13 @@ class GameController extends BaseController
   {
     // Log player contact
     $player = Player::findOrFail($player_id);
-    $player->touch();
+    //$player->touch();
 
     // Purge offline players
-    Player::purge_afk();
+    //Player::purge_afk();
 
     // Return the gamestate
-    return View::make('games', ['games' => Game::orderBy('games.name')->get(), 'player' => $player]);
+    return View::make('games', ['games' => Game::orderBy('games.name')->with('players')->get(), 'player' => $player]);
   }
 
   /**
