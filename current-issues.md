@@ -1,6 +1,6 @@
 ## Issues
 
-This file describes some of the issues we've encountered during the 2013 LAN-party at De Bolk. These issues are prioritised using MoSCoW. Currently, the system was neither useable nor useful to the visitors of the LAN-party. We remain confident that there's a market for this type of supportive software, but that current execution is just too low.
+This file describes some of the issues we've encountered during the 2013 LAN-party at De Bolk. These issues are prioritised using MoSCoW. Currently, the system was neither useable nor useful to the visitors of the LAN-party. We remain confident that there's a market for this type of supportive software, but that the current execution is just too weak.
 
 ### Must have
 * Better performance
