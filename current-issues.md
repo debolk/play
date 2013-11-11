@@ -16,5 +16,6 @@ This file describes some of the issues we've encountered during the 2013 LAN-par
 
 ### Could have
 * Automatically determine which games are played by clients
+* Automatic login based on captive portal authentication
 
 ### Won't have
